@@ -7,11 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Etch-a-Sketch</h1>
     <div class="app-wrapper">
-        <header class="controls">
-            <button id="resize-btn">✏️Change Grid Size</button>
-        </header>
-        
+        <div class="controls">
+
+            <div class="control-group">
+                <label for="color-picker">Pen Color:</label>
+                <input type="color" id="color-picker" value="rgb(68,31,9)">
+            </div>
+
+            <div class="buttons-grid">
+                <button id="eraser-btn">Eraser</button>
+                <button id="toggle-grid">Toggle Grid</button>
+                <button id="clear-btn">Clear</button>
+            </div>
+
+            <div class="control-group">
+                <label for="size-slider">Grid Size:</label>
+                <input type="range" id="size-slider" min="2" max="100" value="16">
+                <span id="size-value">16 x 16</span>
+            </div>
+            
+        </div>
+
         <div id="container"></div>
     </div>
 

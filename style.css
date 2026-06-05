@@ -6,52 +6,152 @@
 
 body {
     background-color: #4b2d1b;
-    font-family: 'Segoe UI', system-ui, sans-serif;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+h1 {
+    color: #ddb892;
+    font-size: 55px;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family:'Courier New', Courier, monospace;
 }
 
 .app-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 25px;
+    gap: 150px;
 }
 
-#resize-btn {
-    background-color: #4a3429;
-    color: #f5ebe0;
-    font-size: 16px;
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    min-width: 220px;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    color: #ddb892;
+    font-size: 33px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+#color-picker {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    height: 55px;
+    padding: 0;
+}
+
+#color-picker::-webkit-color-swatch {
+    border-radius: 10px;
+    border: 2px solid #ddb892;
+}
+
+#size-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 3px;
+    border-radius: 4px;
+    background: rgb(31,15,5);
+    outline: none;
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+
+#size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ddb892;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+#size-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+#size-value {
+    text-align: center;
+    font-size: 15px;
+    color: #ddb892;
     font-weight: 600;
-    padding: 12px 26px;
-    border: 2px solid #634832;
-    border-radius: 12px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.buttons-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button {
+    background-color: rgb(31,15,5);
+    color: #ddb892;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 14px 20px;
+    border: 2px solid #ddb892;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: center;
 }
 
-#resize-btn:hover {
+button:hover {
     background-color: #ddb892;
-    color: #2b201a;
-    border-color: #ddb892;
+    color: rgb(31,15,5);
+    border: 2px solid rgb(31,15,5);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(221, 184, 146, 0.3);
+    box-shadow: 0 6px 15px rgba(221, 184, 146, 0.25);
 }
 
-#resize-btn:active {
+button:active {
     transform: translateY(1px);
+}
+
+button.active {
+    background-color: #ddb892;
+    color: rgb(31,15,5);
+    border: 2px solid rgb(31,15,5);
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 530px;
-    height: 530px;
+    width: 670px;
+    height: 670px;
     background-color: #e6ccb2;
-    border-radius: 14px;
+    border-radius: none;
     overflow: hidden;
     box-shadow: 
         0 20px 40px rgba(0, 0, 0, 0.6),
@@ -60,7 +160,13 @@ body {
 }
 
 .box {
-    border-right: 1px solid rgba(123, 91, 70, 0.08);
-    border-bottom: 1px solid rgba(123, 91, 70, 0.08);
-    transition: opacity 0.05s ease;
+    border-right: 1px solid rgba(74, 52, 41, 0.15);
+    border-bottom: 1px solid rgba(74, 52, 41, 0.15);
+    transition: background-color 0.1s ease, opacity 0.05s ease;
+    background-color: transparent;
+}
+
+.no-grid .box {
+    border-right: none !important;
+    border-bottom: none !important;
 }
